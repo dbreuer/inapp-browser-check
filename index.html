@@ -13,13 +13,11 @@
     <script type="text/javascript">
         (function() {
         const myFunction = function() {
-            var x = "User-agent header sent: " + navigator.userAgent;
-            document.getElementById("demo").innerHTML = x;
+            document.getElementById("demo").innerHTML = "User-agent header sent: " + JSON.stringify(navigator);
         }
         myFunction();
         })();
     </script>
-    <a href="itms-services://?action=download-manifest&amp;url=https://dbreuer.github.io/inapp-browser-check/app.plist">In app install</a>
 </body>
 
 </html>
