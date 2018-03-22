@@ -9,11 +9,44 @@
 </head>
 
 <body>
-    <h2 id="demo"></h2>
+    <code id="demo"></code>
     <script type="text/javascript">
         (function() {
         const myFunction = function() {
-            document.getElementById("demo").innerHTML = "User-agent header sent: " + JSON.stringify(window.navigator);
+            var _navigator = {};
+            for (var i in navigator) _navigator[i] = navigator[i];
+
+            delete _navigator.plugins;
+            delete _navigator.mimeTypes;
+            var txt = "";
+                txt += "<p>Browser CodeName: " + _navigator.appCodeName + "</p>";
+                txt += "<p>Browser Name: " + _navigator.appName + "</p>";
+                txt += "<p>Browser Version: " + _navigator.appVersion + "</p>";
+                txt += "<p>Cookies Enabled: " + _navigator.cookieEnabled + "</p>";
+                txt += "<p>Browser Language: " + _navigator.language + "</p>";
+                txt += "<p>Browser Online: " + _navigator.onLine + "</p>";
+                txt += "<p>Platform: " + _navigator.platform + "</p>";
+                txt += "<p>User-agent header: " + _navigator.userAgent + "</p>";
+
+                txt += "<p>product header: " + _navigator.product + "</p>";
+                txt += "<p>languages header: " + _navigator.languages + "</p>";
+                txt += "<p>onLine header: " + _navigator.onLine + "</p>";
+                txt += "<p>doNotTrack header: " + _navigator.doNotTrack + "</p>";
+                txt += "<p>geolocation header: " + JSON.stringify(_navigator.geolocation) + "</p>";
+                txt += "<p>mediaDevices header: " + JSON.stringify(_navigator.mediaDevices) + "</p>";
+                txt += "<p>connection header: " + JSON.stringify(_navigator.connection) + "</p>";
+                txt += "<p>webkitTemporaryStorage header: " + JSON.stringify(_navigator.webkitTemporaryStorage) + "</p>";
+                txt += "<p>webkitPersistentStorage header: " + JSON.stringify(_navigator.webkitPersistentStorage) + "</p>";
+                txt += "<p>serviceWorker header: " + JSON.stringify(_navigator.serviceWorker) + "</p>";
+                txt += "<p>budget header: " + JSON.stringify(_navigator.budget) + "</p>";
+                txt += "<p>permissions header: " + JSON.stringify(_navigator.permissions) + "</p>";
+                txt += "<p>presentation header: " + JSON.stringify(_navigator.presentation) + "</p>";
+                txt += "<p>bluetooth header: " + JSON.stringify(_navigator.bluetooth) + "</p>";
+                txt += "<p>deviceMemory header: " + _navigator.deviceMemory + "</p>";
+                txt += "<p>credentials header: " + JSON.stringify(_navigator.credentials) + "</p>";
+                txt += "<p>storage header: " + JSON.stringify(_navigator.storage) + "</p>";
+                txt += "<p>usb header: " + JSON.stringify(_navigator.usb) + "</p>";
+            document.getElementById("demo").innerHTML = txt;
         }
         myFunction();
         })();
