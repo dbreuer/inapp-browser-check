@@ -14,10 +14,12 @@
         (function() {
         const myFunction = function() {
             var _navigator = {};
+            document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
             for (var i in navigator) _navigator[i] = navigator[i];
 
             delete _navigator.plugins;
             delete _navigator.mimeTypes;
+            var all_cook = document.cookie;
             var txt = "";
                 txt += "<p>Browser CodeName: " + _navigator.appCodeName + "</p>";
                 txt += "<p>Browser Name: " + _navigator.appName + "</p>";
@@ -46,6 +48,10 @@
                 txt += "<p>credentials header: " + JSON.stringify(_navigator.credentials) + "</p>";
                 txt += "<p>storage header: " + JSON.stringify(_navigator.storage) + "</p>";
                 txt += "<p>usb header: " + JSON.stringify(_navigator.usb) + "</p>";
+                txt += "<hr/>";
+
+                txt += "<p>Cookies: " + JSON.stringify(all_cook) + "</p>";
+
             document.getElementById("demo").innerHTML = txt;
         }
         myFunction();
