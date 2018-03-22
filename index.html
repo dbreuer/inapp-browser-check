@@ -12,14 +12,20 @@
     <code id="demo"></code>
     <script type="text/javascript">
         (function() {
+        document.cookie = "cookieTest=John Doe";
+        window.localStorage.setItem('testLocal', 'success');
+        window.sessionStorage.setItem('testSession', 'success');
         const myFunction = function() {
             var _navigator = {};
-            document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
+
             for (var i in navigator) _navigator[i] = navigator[i];
 
             delete _navigator.plugins;
             delete _navigator.mimeTypes;
             var all_cook = document.cookie;
+            var myStorage = window.localStorage;
+            var mySession = window.sessionStorage;
+
             var txt = "";
                 txt += "<p>Browser CodeName: " + _navigator.appCodeName + "</p>";
                 txt += "<p>Browser Name: " + _navigator.appName + "</p>";
@@ -51,6 +57,8 @@
                 txt += "<hr/>";
 
                 txt += "<p>Cookies: " + JSON.stringify(all_cook) + "</p>";
+                txt += "<p>Local storage: " + JSON.stringify(myStorage) + "</p>";
+                txt += "<p>Local session: " + JSON.stringify(mySession) + "</p>";
 
             document.getElementById("demo").innerHTML = txt;
         }
